@@ -27,7 +27,7 @@ export const Detail: React.FC<Props> = (props) => {
     if (!!id) {
       fetchGifs();
     }
-  }, []);
+  }, [id]);
 
   if (isLoading) {
     return <h2>Loading...</h2>;
