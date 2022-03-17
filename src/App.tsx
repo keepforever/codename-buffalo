@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { GifSearchGrid } from "./components/GifSearchGrid";
+import { Instructions } from "./components/Instructions";
+import { Detail } from "./components/Detail";
+
+const App = () => (
+  <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+    <BrowserRouter>
+      <nav
+        style={{
+          display: "flex",
+          paddingBottom: "1rem",
+        }}
+      >
+        <Link style={{ marginRight: 20 }} to="/">
+          Instructions
+        </Link>{" "}
+        |{" "}
+        <Link style={{ marginLeft: 20 }} to="/search">
+          Search
+        </Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Instructions />} />
+        <Route path="search" element={<GifSearchGrid />} />
+        <Route path="detail/:id" element={<Detail />} />
+      </Routes>
+    </BrowserRouter>
+  </div>
+);
 
 export default App;
